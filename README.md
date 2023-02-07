@@ -239,7 +239,7 @@ console.log(word1.length !== word2.length);
 ```
 
 #### Output Explained
-	- true
+	- false
 
 The length of the two words is compared using the !== operator, which returns true if the values are not equal. The result is then logged to the console.
 
