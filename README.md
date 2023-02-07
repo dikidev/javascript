@@ -254,20 +254,98 @@ The length of the two words is compared using the !== operator, which returns tr
     - What is the minutes now?
     - Find out the numbers of seconds elapsed from January 1, 1970 to now.
 
+#### Topics 
+	- Date()
+
+#### Code
+``` javascript
+let today = new Date();
+
+console.log("Year: ", today.getFullYear());
+console.log("Month: ", today.getMonth() + 1);
+console.log("Date: ", today.getDate());
+console.log("Day: ", today.getDay());
+console.log("Hours: ", today.getHours());
+console.log("Minutes: ", today.getMinutes());
+console.log("Seconds since January 1, 1970: ", today.getTime() / 1000);
+
+```
+
+#### Output Explained 
+This code creates a Date object and stores it in the today variable. The various methods like getFullYear(), getMonth(), getDate(), getDay(), getHours(), and getMinutes() are then used to get the year, month, date, day, hours, and minutes, respectively. The getTime() method returns the number of milliseconds elapsed since January 1, 1970, so it is divided by 1000 to get the number of seconds. The result of each method is logged to the console.
 
 ## Question 12
 12. Create a human readable time format using the Date time object
     - YYYY-MM-DD HH:mm
     - DD-MM-YYYY HH:mm
     - DD/MM/YYYY HH:mm
+#### Topics
+	- Date(), getFullYear(), getMonth(), getDate(), getHours(), and getMinutes() methods
 
+#### Code
+```javascript
+let today = new Date();
+
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+let date = today.getDate();
+let hours = today.getHours();
+let minutes = today.getMinutes();
+
+let formattedDate1 = `${year}-${month < 10 ? "0" + month : month}-${date < 10 ? "0" + date : date} ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+let formattedDate2 = `${date < 10 ? "0" + date : date}-${month < 10 ? "0" + month : month}-${year} ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+let formattedDate3 = `${date < 10 ? "0" + date : date}/${month < 10 ? "0" + month : month}/${year} ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+
+console.log(formattedDate1);
+console.log(formattedDate2);
+console.log(formattedDate3);
+
+```
+#### Output Explained 
+	- In this code, a Date object is created and stored in the today variable. The year, month, date, hours, and minutes are extracted using the getFullYear(), getMonth(), getDate(), getHours(), and getMinutes() methods, respectively. The date and time values are then formatted into strings using string concatenation and the ternary operator (? :). The if condition inside the ternary operator checks if the values are less than 10 and adds a leading 0 if necessary. Finally, the formatted strings are logged to the console. 
 
 ## Question 13
 13. Get user input using prompt(“Enter your age:”). If user is 18 or older , give feedback:'You are old enough to drive' but if not 18 give another feedback stating to wait for the number of years he needs to turn 18.
 
+#### topics
+	- prompt(),parseInt()
+
+#### code
+```javascript
+let age = prompt("Enter your age:");
+age = parseInt(age);
+
+if (age >= 18) {
+  console.log("You are old enough to drive");
+} else {
+  console.log(`You need to wait for ${18 - age} years to turn 18`);
+}
+
+```
+
+#### output explained
+	- In this code, the prompt() method is used to get the user's age and store it in the age variable. The parseInt() function is used to convert the string value to an integer. The if statement checks if the user's age is greater than or equal to 18, and if so, outputs the message "You are old enough to drive". If the user's age is less than 18, the message "You need to wait for X years to turn 18" is output, where X is the number of years until the user turns 18.
 
 ## Question 14
 14. Even numbers are divisible by 2 and the remainder is zero. How do you check, if a number is even or not using JavaScript? Create a program which checks that the given number is even or odd.
+
+#### topics 
+	- prompt(),  parseInt(), string to integer, 
+
+#### code
+```javascript
+let number = prompt("Enter a number:");
+number = parseInt(number);
+
+if (number % 2 === 0) {
+  console.log(`${number} is an even number`);
+} else {
+  console.log(`${number} is an odd number`);
+}
+```
+
+#### output explained
+In this code, the prompt() method is used to get the number and store it in the number variable. The parseInt() function is used to convert the string value to an integer. The if statement checks if the number is divisible by 2 and has no remainder (number % 2 === 0), and if so, outputs the message "X is an even number", where X is the number. If the number is not divisible by 2 and has a remainder, the message "X is an odd number" is output.
 
 ## Question 15
 15. Write a program which can give grades to students according to theirs scores:
@@ -277,6 +355,32 @@ The length of the two words is compared using the !== operator, which returns tr
     - 50-59, D
     - 0-49, F
 
+#### topics
+	- prompt(), parseInt(), if, else
+
+#### code
+```javascript 
+let score = prompt("Enter your score:");
+score = parseInt(score);
+
+if (score >= 80 && score <= 100) {
+  console.log("Your grade is A");
+} else if (score >= 70 && score <= 89) {
+  console.log("Your grade is B");
+} else if (score >= 60 && score <= 69) {
+  console.log("Your grade is C");
+} else if (score >= 50 && score <= 59) {
+  console.log("Your grade is D");
+} else if (score >= 0 && score <= 49) {
+  console.log("Your grade is F");
+} else {
+  console.log("Invalid score");
+}
+```
+
+#### output explained
+In this code, the prompt() method is used to get the student's score and store it in the score variable. The parseInt() function is used to convert the string value to an integer. The if statement checks the student's score against the different ranges of scores, and outputs the corresponding grade. If the score is outside of the range 0 to 100, an "Invalid score" message is output.
+
 ## Question 16
 16. Check if the season is Autumn, Winter, Spring or Summer. If the user input is :
     - September, October or November, the season is Autumn.
@@ -284,18 +388,93 @@ The length of the two words is compared using the !== operator, which returns tr
     - March, April or May, the season is Spring
     - June, July or August, the season is Summer
 
+#### topics
+	- prompt(), store input in variable, cheack value of variable against others, if, else
+
+#### code
+```javascript
+let month = prompt("Enter a month (e.g. January, February, etc):");
+
+if (month === "September" || month === "October" || month === "November") {
+  console.log("The season is Autumn");
+} else if (month === "December" || month === "January" || month === "February") {
+  console.log("The season is Winter");
+} else if (month === "March" || month === "April" || month === "May") {
+  console.log("The season is Spring");
+} else if (month === "June" || month === "July" || month === "August") {
+  console.log("The season is Summer");
+} else {
+  console.log("Invalid month");
+}
+```
+
+#### output explained
+The prompt() method is used to get the user's input and store it in the month variable. The if statement checks the value of the month variable against the different months, and outputs the corresponding season. If the input is not a valid month, an "Invalid month" message is output.
 
 ## Question 17
 17. Write a program which tells the number of days in a month.
 
+#### topics
+
+#### code
+```javascript
+let month = prompt("Enter a month (e.g. January, February, etc):");
+let year = prompt("Enter a year (e.g. 2020, 2021, etc):");
+let numOfDays;
+
+switch (month) {
+  case "January":
+  case "March":
+  case "May":
+  case "July":
+  case "August":
+  case "October":
+  case "December":
+    numOfDays = 31;
+    break;
+  case "February":
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+      numOfDays = 29;
+    } else {
+      numOfDays = 28;
+    }
+    break;
+  case "April":
+  case "June":
+  case "September":
+  case "November":
+    numOfDays = 30;
+    break;
+  default:
+    console.log("Invalid month");
+    break;
+}
+
+if (numOfDays) {
+  console.log(`The number of days in ${month} ${year} is ${numOfDays}.`);
+}
+```
+
+#### output explained
+The prompt() method is used to get the user's inputs for the month and year, which are then stored in the month and year variables respectively. A switch statement is used to determine the number of days in the month based on the value of month. If month is equal to "February", a separate check is performed to determine if the year is a leap year. If the year is a leap year, the number of days is 29, otherwise it is 28. If the input is not a valid month, an "Invalid month" message is output.
 
 ## Question 18
 18. Write a program which tells the number of days in a month, now consider leap year.
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 19
 19. Create a countries.js file and store the countries name into this file, create a file web_techs.js and store the popular web technology names into this file. Access both file in a third file named main.js
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 20
 20. In the following shopping cart add, remove, edit items
@@ -305,10 +484,20 @@ The length of the two words is compared using the !== operator, which returns tr
     - remove 'Honey'
     - modify Tea to 'Green Tea'
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 21
 21. In countries array check if 'Ethiopia' exists in the array if it exists print 'ETHIOPIA'. If it does not exist add to the countries list.
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 22
 22. The following is an array of 10 students ages:
@@ -319,14 +508,29 @@ The length of the two words is compared using the !== operator, which returns tr
     - Find the range of the ages(max minus min)
     - Compare the value of (min - average) and (max - average), use abs() method
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 23
 23. Write a program to check that the number given by the user is a prime number or not.
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 24
 24. Write a program to create two array "even" and "odd" having even and odd number between the 0 to 100 (0 and 100 included).
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 25
 25. Body mass index(BMI) is calculated as follows: bmi = weight in Kg / (height x height) in m2. Write a function which calculates bmi. BMI is used to broadly define different weight groups in adults 20 years old or older.Check if a person is underweight, normal, overweight or obese based the information given below.
@@ -336,6 +540,12 @@ The length of the two words is compared using the !== operator, which returns tr
     - Overweight: BMI is 25 to 29.9
     - Obese: BMI is 30 or more
 
+#### topics
+
+#### code
+
+#### output explained
+
 
 ## Question 26
 26. Write a program to print the table of any number given by the user. The format of the output should be smiliar to the below example-
@@ -344,10 +554,20 @@ The length of the two words is compared using the !== operator, which returns tr
 	2 * 2 = 4
 	2 * 3 = 6 and so on till 2 * 10 = 20.
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 27
 27. Write a program to print all the prime number between 0 to 100 (0 and 100 included).
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 28
 28. Write a program to print the given patterns using the loops-
@@ -366,15 +586,30 @@ The length of the two words is compared using the !== operator, which returns tr
 	    ***
  	   *****
 
+#### topics
+
+#### code
+
+#### output explained
 
 
 ## Question 29
 29. Write a javascript program which takes the input of filename as string and prints the extension of the file in the console.
 
+#### topics
+
+#### code
+
+#### output explained
 
 ## Question 30
 30. Create a simple calculator program in JavaScript which can perform the addition, substraction, multiplication and division on given numbers.
 
+#### topics
+
+#### code
+
+#### output explained
 
 
 
