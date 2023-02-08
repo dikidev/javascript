@@ -462,10 +462,28 @@ The prompt() method is used to get the user's inputs for the month and year, whi
 18. Write a program which tells the number of days in a month, now consider leap year.
 
 #### topics
+	- switch(), function daysInMonth, 
 
 #### code
+```javascript
+function daysInMonth(month, year) {
+  switch (month) {
+    case 2:
+      return (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) ? 29 : 28; // checks for leap year
+    case 4: case 6: case 9: case 11:
+      return 30;
+    default:
+      return 31;
+  }
+}
+
+console.log(daysInMonth(2, 2022)); // 28
+console.log(daysInMonth(2, 2020)); // 29
+console.log(daysInMonth(11, 2022)); // 30
+```
 
 #### output explained
+The daysInMonth function takes two arguments: month and year. The switch statement determines the number of days in the month based on the value of month. For the month of February, a leap year is determined using the given condition year % 400 == 0 || (year % 100 != 0 && year % 4 == 0), and if it's a leap year, it returns 29, otherwise it returns 28. For the remaining months, it returns the number of days based on the case statement.
 
 ## Question 19
 19. Create a countries.js file and store the countries name into this file, create a file web_techs.js and store the popular web technology names into this file. Access both file in a third file named main.js
